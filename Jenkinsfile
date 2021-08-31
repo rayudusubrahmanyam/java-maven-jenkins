@@ -6,5 +6,12 @@ pipeline {
                 git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/rayudusubrahmanyam/java-maven-jenkins.git'
                   }
         }
+        stage('Java Application Build') {
+            steps {
+                script {
+                    sh 'mvn clean package'
+                }
+            }
+        }
     }
 }

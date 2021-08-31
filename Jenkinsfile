@@ -1,3 +1,4 @@
+@Library("jenkins-shared-lib")_
 pipeline {
     agent any
     stages {
@@ -9,7 +10,7 @@ pipeline {
         stage('Java Application Build') {
             steps {
                 script {
-                    sh 'mvn clean package'
+                    buildJarFile()
                 }
             }
         }

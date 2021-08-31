@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Fetch Repository') {
             steps {
-                git "https://github.com/rayudusubrahmanyam/java-maven-jenkins.git" -branch "main"
+                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/rayudusubrahmanyam/java-maven-jenkins.git'
                   }
         }
     }

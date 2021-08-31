@@ -31,10 +31,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DockerHub', PasswordVariable:'PASS', usernameVariable: 'USER')])
-           
+                    {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker push rayudusubrahmanyam/myapp:$BUILD_NUMBER.0"   
-                  
+                    }
                 }
             }
         }        

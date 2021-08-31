@@ -14,30 +14,12 @@ pipeline {
                 }
             }
         }
-        stage('Java Build Test') {
+        stage('Docker Image Build && Push') {
             steps {
                 script {
-                    sh 'mvn test'
-                }
-            }
-        }
-        stage('Docker Image Build') {
-            steps {
-                script {
-                   sh "docker build -t rayudusubrahmanyam/myapp:$BUILD_NUMBER.0 ."
+                   buildDockerImage()
                 }
             }
         } 
-        stage('Docker Image Push') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable:'PASS', usernameVariable: 'USER')])
-                    {
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh "docker push rayudusubrahmanyam/myapp:$BUILD_NUMBER.0"   
-                    }
-                }
-            }
-        }        
     }
 }

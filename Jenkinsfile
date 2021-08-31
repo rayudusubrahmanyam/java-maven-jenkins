@@ -17,7 +17,7 @@ pipeline {
         stage('Docker Image Build && Push') {
             steps {
                 script {
-                   buildDockerImage()
+                   buildDockerImage("rayudusubrahmanyam/myapp:$BUILD_NUMBER.0")
                 }
             }
         } 

@@ -23,9 +23,18 @@ pipeline {
         stage('Docker Image Build') {
             steps {
                 script {
-                    sh 'docker build -t myapp:1.0 .'
+                   sh "docker build -t rayudusubrahmanyam/myapp:$BUILD_NUMBER.0 ."
                 }
             }
-        }   
+        } 
+        stage('Docker Image Push') {
+            steps {
+                script {
+                    withCredentils([usernamePassword(credentialsId: 'DockerHub', PasswordVariable:'PASS", usernameVariable: 'USER')])
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh "docker push rayudusubrahmanyam/myapp:$BUILD_NUMBER.0"                                
+                }
+            }
+        }        
     }
 }

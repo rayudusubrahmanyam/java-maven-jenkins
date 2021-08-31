@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+        stage('Java Build Test') {
+            steps {
+                script {
+                    sh 'mvn test'
+                }
+            }
+        }
         stage('Docker Image Build') {
             steps {
                 script {

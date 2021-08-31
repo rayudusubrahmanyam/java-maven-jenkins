@@ -30,7 +30,7 @@ pipeline {
         stage('Docker Image Push') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'DockerHub', PasswordVariable:'PASS', usernameVariable: 'USER')])
+                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable:'PASS', usernameVariable: 'USER')])
                     {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker push rayudusubrahmanyam/myapp:$BUILD_NUMBER.0"   

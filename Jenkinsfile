@@ -5,7 +5,7 @@ pipeline {
         stage('Fetch Repository') {
             steps {
                 script {
-                    fetchRepo('https://github.com/rayudusubrahmanyam/java-maven-jenkins.git' )
+                    git branch: 'main', credentialsId: 'Github', url: 'https://github.com/rayudusubrahmanyam/java-maven-jenkins.git'
                 }
             }
         }

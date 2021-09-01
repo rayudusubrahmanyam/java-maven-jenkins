@@ -18,6 +18,8 @@ pipeline {
             steps {
                 script {
                    buildDockerImage("rayudusubrahmanyam/myapp:$BUILD_NUMBER.0")
+                   dockerLogin();
+                   dockerPush("rayudusubrahmanyam/myapp:$BUILD_NUMBER.0");
                 }
             }
         } 

@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Fetch Repository') {
             steps {
-                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/rayudusubrahmanyam/java-maven-jenkins.git'
-                  }
+                script {
+                    fetchRepo('main','https://github.com/rayudusubrahmanyam/java-maven-jenkins.git')
+                }
+            }
         }
         stage('Java Application Build') {
             steps {

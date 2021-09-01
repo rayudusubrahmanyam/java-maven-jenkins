@@ -5,7 +5,7 @@ pipeline {
         stage('Fetch Repository') {
             steps {
                 script {
-                    fetchRepo('main','https://github.com/rayudusubrahmanyam/java-maven-jenkins.git')
+                    fetchRepo( 'main' , 'https://github.com/rayudusubrahmanyam/java-maven-jenkins.git' )
                 }
             }
         }

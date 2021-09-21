@@ -16,6 +16,13 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Scanner') {
+            steps {
+                script {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }        
         stage('Docker Image Build and Push') {
             steps {
                 script {

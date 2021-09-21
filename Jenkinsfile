@@ -17,10 +17,12 @@ pipeline {
             }
         }
         stage('Code Quality scan') {
+            steps{
             withSonarQubeEnv('SonarQube') {
                 sh 'mvn sonar:sonar'
                 }
-            }        
+            }
+        }        
         stage('Docker Image Build and Push') {
             steps {
                 script {
